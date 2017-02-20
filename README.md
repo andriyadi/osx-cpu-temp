@@ -39,6 +39,7 @@ clib install lavoiesl/osx-cpu-temp
 
  * `-C` Output temperature in Celsius (default).
  * `-F` Output temperature in Fahrenheit.
+ * `-N` Output temperature in Celcius, but no unit, just float number.
 
 ## Maintainer 
 
