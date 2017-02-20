@@ -173,24 +173,30 @@ int main(int argc, char *argv[])
     char scale = 'C';
 
     int c;
-    while ((c = getopt(argc, argv, "CF")) != -1) {
+    while ((c = getopt(argc, argv, "CFN")) != -1) {
       switch (c) {
         case 'F':
         case 'C':
+        case 'N':
           scale = c;
           break;
-      }
+        }
     }
 
     SMCOpen();
     double temperature = SMCGetTemperature(SMC_KEY_CPU_TEMP);
     SMCClose();
 
-    if (scale == 'F') {
-      temperature = convertToFahrenheit(temperature);
+    if (scale == 'N') {
+        printf("%0.2f\n", temperature);
     }
+    else {
+        if (scale == 'F') {
+          temperature = convertToFahrenheit(temperature);
+        }
 
-    printf("%0.1f°%c\n", temperature, scale);
+        printf("%0.1f°%c\n", temperature, scale);
+    }
 
     return 0;
 }
